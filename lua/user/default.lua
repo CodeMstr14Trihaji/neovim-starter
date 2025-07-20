@@ -1,7 +1,7 @@
 -- activate config spesific languages
 pcode.lang = {
 	angular = false,
-	cpp = false,
+	cpp = true,
 	sql = false,
 	deno = false,
 	golang = false,
@@ -11,7 +11,7 @@ pcode.lang = {
 	markdown = false,
 	php = false,
 	prisma = false,
-	python = false,
+	python = true,
 	rust = false,
 	tailwind = false,
 }
@@ -28,18 +28,20 @@ pcode.extras = {
 	rest = false,
 	treesittercontex = false,
 	codeium = false,
-	colorizer = false,
-	dap = false,
-	deviconcolor = false,
-	illuminate = false,
+
+	-- colorizer membuat icons dan syntax lebih berwarna
+	colorizer = true,
+	dap = true,
+	deviconcolor = true,
+	illuminate = true,
 	indentscupe = false,
-	navic = false,
+	navic = true,
 	nvimmenu = false,
 	scrollview = false,
-	verticalcolumn = false,
+	verticalcolumn = true,
 	visualmulti = false,
 	yanky = false,
-	zenmode = false,
+	zenmode = true,
 	rainbowdelimiters = true,
 	smartsplit = true,
 }
@@ -47,7 +49,7 @@ pcode.extras = {
 pcode.themes = {
 	-- note: open remark only one
 	-- **:: Eva Theme ::** --
-	evatheme = "Eva-Dark",
+	-- evatheme = "Eva-Dark",
 	-- evatheme = "Eva-Dark-Italic",
 	-- evatheme = "Eva-Dark-Bold",
 	--
@@ -67,7 +69,7 @@ pcode.themes = {
 	-- sublimetext = "juliana",
 	--
 	-- **:: Tokyonight Theme ::** --
-	-- tokyonight = "tokyonight-night",
+	 tokyonight = "tokyonight-night",
 	-- tokyonight = "tokyonight-storm",
 	-- tokyonight = "tokyonight-day",
 	-- tokyonight = "tokyonight-moon",
@@ -80,4 +82,5 @@ pcode.themes = {
 	-- catppuccin = "catppuccin-macchiato",
 }
 -- activate config transparent_bg
-pcode.transparent = false
+pcode.transparent = true;
+

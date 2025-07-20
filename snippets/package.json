@@ -3,7 +3,7 @@
     "snippets": [
       {
         "language": "html",
-        "path": "./html/snippets.json"
+        "path": "./html.json"
       }
     ]
   }
