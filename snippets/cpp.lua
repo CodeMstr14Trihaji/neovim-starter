@@ -4,6 +4,11 @@ local t = ls.text_node
 local i = ls.insert_node
 local fmt = require("luasnip.extras.fmt").fmt
 
+-- Fungsi untuk waktu lengkap (tanggal + jam)
+local datetime = function() return os.date("%Y-%m-%d %H:%M") end
+-- Fungsi untuk nama file
+local filename = function() return vim.fn.expand("%:t") end
+
 return {
 
   s("cppmain", fmt([[
@@ -135,12 +140,11 @@ class {} {{
 
   s("passtest", t([[cout << "CHECKPOINT REACHED!\n";]])),
 
-  s("profil", t({
-      "/* ",
-      "Author  = Pojok Code",
-      "Date    = $CURRENT_YEAR-$CURRENT_MONTH-${CURRENT_DATE}",
-      "File    = $TM_FILENAME",
-      "*/",
-  }))
-
+  s("cpprofil", {
+    t({"/*"}),                    -- baris awal komentar
+    t({"", "Author  = trihajikhr"}), -- baris author
+    t({"", "Date    = "}), f(datetime), -- baris date
+    t({"", "File    = "}), f(filename), -- baris file
+    t({"", "*/"}),                -- akhir komentar
+  }),
 }
