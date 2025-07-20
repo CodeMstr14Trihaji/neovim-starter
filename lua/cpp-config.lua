@@ -7,47 +7,80 @@ vim.api.nvim_create_autocmd("FileType", {
     local exe_ext = is_windows and ".exe" or ""
     local run_cmd = is_windows and "%<" or "./%<"
 
-    -- menggunakan freeopen(input.txt & output.txt)
-    -- F4: run with file
-    vim.keymap.set("n", "<F4>", function()
-      vim.cmd("w") -- Simpan file cpp
-      local filename = vim.fn.expand("%:t:r")
-      local exe_ext = vim.loop.os_uname().version:match("Windows") and ".exe" or ""
-      local run_cmd = filename .. exe_ext
 
-      vim.fn.jobstart(run_cmd, {
-        stdout_buffered = true,
-        stderr_buffered = true,
-        on_exit = function()
-          -- reload output.txt silently if it's already open
-          for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-            if vim.api.nvim_buf_get_name(buf):match("output%.txt$") then
-              vim.api.nvim_buf_call(buf, function()
-                vim.cmd("checktime")
-              end)
-            end
-          end
-        end,
-      })
-    end, { buffer = true, noremap = true, silent = true })
+  vim.keymap.set("n", "<F4>", function()
+  vim.cmd("w") -- simpan file dulu
 
+  local filename = vim.fn.expand("%:t:r")
+  local filepath = vim.fn.expand("%:p")
+  local exe_file = filename .. ".exe"
 
+  -- Pastikan input.txt dan output.txt berada di direktori yang sama dengan file sumber
+  -- Ini penting agar cmd.exe bisa menemukannya dengan path relatif
+  local current_dir = vim.fn.fnamemodify(filepath, ":h")
 
-    vim.api.nvim_create_autocmd("BufEnter", {
-      pattern = "output.txt",
-      command = "checktime"
-    })
+  -- Gabungkan compile dan run dalam satu perintah cmd.exe
+  -- Perintah akan dijalankan dari direktori file saat ini
+  local cmd = string.format(
+    'cd /D "%s" && g++ "%s" -o "%s" && "%s" < input.txt > output.txt',
+    current_dir, filepath, exe_file, exe_file
+  )
 
-    -- F5: Compile + Run
-    vim.keymap.set("n", "<F5>", function()
-      vim.cmd("w")
-      vim.cmd("belowright split | terminal g++ % -o %<" .. exe_ext .. " && " .. run_cmd)
-    end, { buffer = true, noremap = true, silent = true })
+  vim.fn.jobstart({ "cmd.exe", "/C", cmd }, {
+    stdout_buffered = true,
+    stderr_buffered = true,
+    on_exit = function(job_id, code, event)
+      if code ~= 0 then
+        -- Jika ada error, ambil dan tampilkan output stderr
+        local stderr_output = vim.fn.jobget(job_id, "stderr")
+        local error_message = "❌ Compile atau Run gagal!\n"
+        if #stderr_output > 0 then
+          error_message = error_message .. table.concat(stderr_output, "\n")
+        else
+          error_message = error_message .. "Tidak ada detail error yang tersedia."
+        end
+        vim.notify(error_message, vim.log.levels.ERROR, { title = "Build Error" })
+        return
+      end
 
-    -- F6: Hanya Run
-    vim.keymap.set("n", "<F6>", function()
-      vim.cmd("belowright split | terminal " .. run_cmd)
-    end, { buffer = true, noremap = true, silent = true })
+      -- Jika berhasil, notifikasi sukses
+      vim.notify("✅ Kompilasi dan Eksekusi Berhasil!", vim.log.levels.INFO)
+
+      -- Refresh output.txt kalau sedang dibuka
+      for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        local name = vim.api.nvim_buf_get_name(buf)
+        if name:match("output%.txt$") then
+          vim.api.nvim_buf_call(buf, function()
+            vim.cmd("checktime")
+          end)
+        end
+      end
+    end,
+  })
+end, { buffer = true, noremap = true, silent = true })
+
+    -- vim.api.nvim_create_autocmd("BufEnter", {
+    --   pattern = "output.txt",
+    --   command = "checktime"
+    -- })
+
+  -- F5: Compile + Run
+  vim.keymap.set("n", "<F5>", function()
+    vim.cmd("w")
+    local is_windows = vim.loop.os_uname().version:match("Windows")
+    local exe_ext = is_windows and ".exe" or ""
+    local run_cmd = (is_windows and ".\\" or "./") .. vim.fn.expand("%:t:r") .. exe_ext
+    vim.cmd("belowright split | terminal g++ % -o %<" .. exe_ext .. " && " .. run_cmd)
+  end, { buffer = true, noremap = true, silent = true })
+
+  -- F6: Run only
+  vim.keymap.set("n", "<F6>", function()
+    local is_windows = vim.loop.os_uname().version:match("Windows")
+    local exe_ext = is_windows and ".exe" or ""
+    local run_cmd = (is_windows and ".\\" or "./") .. vim.fn.expand("%:t:r") .. exe_ext
+    vim.cmd("belowright split | terminal " .. run_cmd)
+  end, { buffer = true, noremap = true, silent = true })
+
 
     -- F7: Hanya Compile
     vim.keymap.set("n", "<F7>", function()

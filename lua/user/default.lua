@@ -69,7 +69,7 @@ pcode.themes = {
 	-- sublimetext = "juliana",
 	--
 	-- **:: Tokyonight Theme ::** --
-	 tokyonight = "tokyonight-night",
+	tokyonight = "tokyonight-night",
 	-- tokyonight = "tokyonight-storm",
 	-- tokyonight = "tokyonight-day",
 	-- tokyonight = "tokyonight-moon",
@@ -83,4 +83,5 @@ pcode.themes = {
 }
 -- activate config transparent_bg
 pcode.transparent = true;
+
 
