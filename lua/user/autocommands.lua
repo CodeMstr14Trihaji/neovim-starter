@@ -23,3 +23,9 @@ if pcode.themes then
 	end
 	vim.cmd("colorscheme " .. theme)
 end
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  pattern = "*",
+  command = "checktime",
+})
+

@@ -1,6 +1,17 @@
 -- init.lua atau config awal kamu
 vim.env.PATH = vim.env.PATH .. ';C:\\Program Files\\Git\\cmd'
 
+vim.api.nvim_create_user_command("ReloadLua", function()
+  local file = vim.fn.expand("%:p")
+  if file:match("%.lua$") then
+    dofile(file)
+    print("✅ Reloaded " .. file)
+  else
+    print("❌ Not a Lua file.")
+  end
+end, {})
+
+
 return {
   -- Tema dan UI
   {

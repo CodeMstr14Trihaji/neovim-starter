@@ -1,3 +1,5 @@
+local projects = require("core.projects")
+
 return {
   "goolord/alpha-nvim",
   config = function()
@@ -16,6 +18,9 @@ return {
 dashboard.section.buttons.val = {
   dashboard.button("e", "  New File", ":ene <BAR> startinsert <CR>"),
   dashboard.button("f", "󰈞  Find File", ":Telescope find_files<CR>"),
+  dashboard.button("o", "  Open Project Folder", function() 
+    projects.open()
+    end),
   dashboard.button("g", "  Grep Text", ":Telescope live_grep<CR>"),
   dashboard.button("r", "  Recent Files", ":Telescope oldfiles<CR>"),
   dashboard.button("u", "  Update Plugins", ":Lazy update<CR>"),
