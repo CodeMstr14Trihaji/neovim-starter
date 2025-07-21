@@ -31,6 +31,7 @@ dashboard.section.buttons.val = {
 }
 
 dashboard.section.footer.val = "⚡ Neovim ready to go!"
+
     -- Center layout
     dashboard.opts.layout[1].val = 8  -- padding top, bisa ubah ke 4–6 kalau mau lebih rapat
     alpha.setup(dashboard.opts)

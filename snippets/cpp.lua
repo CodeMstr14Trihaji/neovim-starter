@@ -142,9 +142,9 @@ class {} {{
 
   s("cpprofil", {
     t({"/*"}),                    -- baris awal komentar
-    t({"", "Author  = trihajikhr"}), -- baris author
-    t({"", "Date    = "}), f(datetime), -- baris date
-    t({"", "File    = "}), f(filename), -- baris file
+    t({"", "Author  : trihajikhr"}), -- baris author
+    t({"", "Date    : "}), f(datetime), -- baris date
+    t({"", "File    : "}), f(filename), -- baris file
     t({"", "*/"}),                -- akhir komentar
   }),
 }

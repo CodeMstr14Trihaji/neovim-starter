@@ -62,7 +62,10 @@ require("lazy").setup({
 		},
 	},
 	change_detection = { enabled = false, notify = false },
-	checker = { enabled = true }, -- automatically check for plugin updates
+
+	-- true ✅ kalau mau pas buka auto detect apa aja yang diupdate
+	-- false ❌ kalau mau ngebut aja pas masuk nvim, ngga usah ngecek-ngecek segala, biar ngebut!
+	checker = { enabled = false }, -- automatically check for plugin updates
 	performance = {
 		rtp = {
 			-- disable some rtp plugins

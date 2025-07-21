@@ -11,6 +11,7 @@ vim.api.nvim_create_user_command("ReloadLua", function()
   end
 end, {})
 
+vim.lsp.enable('clangd')
 
 return {
   -- Tema dan UI
@@ -106,29 +107,14 @@ return {
     end,
   },
   -- {
-  --   "goolord/alpha-nvim",
+  --   "pojokcodeid/auto-conform.nvim",
   --   lazy = false,
   --   opts = {
-  --     dash_model = {
-  --       [[  __         .__.__                __.__ __   .__           ]],
-  --       [[_/  |________|__|  |__ _____      |__|__|  | _|  |_________ ]],
-  --       [[\   __\_  __ \  |  |  \\__  \     |  |  |  |/ /  |  \_  __ \]],
-  --       [[ |  |  |  | \/  |   Y  \/ __ \_   |  |  |    <|   Y  \  | \/]],
-  --       [[ |__|  |__|  |__|___|  (____  /\__|  |__|__|_ \___|  /__|   ]],
-  --       [[                     \/     \/\______|       \/    \/     ]],
-  --     },
+  --     format_on_save = true,
+  --     format_timeout_ms = 5000,
   --   },
   -- },
-
-  -- Format dan LSP
-  {
-    "pojokcodeid/auto-conform.nvim",
-    lazy = false,
-    opts = {
-      format_on_save = true,
-      format_timeout_ms = 5000,
-    },
-  },
+  { import = "plugins.formatter" },
   {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
@@ -142,14 +128,6 @@ return {
     opts = {
       ensure_installed = {},
     },
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    lazy = false,
-    opts = function(_, opts)
-      vim.list_extend(opts.skip_config, {})
-      opts.virtual_text = true
-    end,
   },
 
   -- Which-key
