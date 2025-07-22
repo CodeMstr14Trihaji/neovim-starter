@@ -22,6 +22,14 @@ return {
       require("nvim-tree").setup()
     end,
   },
+
+  -- Dalam plugin setup | SET UP MAKEFILE!
+  {
+    "mfussenegger/nvim-dap",
+    config = function()
+      require("customs.configs.dap")
+    end,
+  },
   {
     "akinsho/bufferline.nvim",
     lazy = false,
