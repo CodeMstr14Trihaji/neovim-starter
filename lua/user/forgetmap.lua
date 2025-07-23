@@ -115,6 +115,11 @@ local forget_map = {
 	🪢 Word Wrap
 	<A-z>
 	]],
+
+	CopyLine = [[
+     ✂️ Copy line
+     yyP
+    ]],
 }
 
 -- Register semua command :ForgetX
