@@ -123,7 +123,7 @@ local forget_map = {
 
 	InsertNav = "Dari mode insert tanpa escape : <A> h/j/k/l",
 
-	TempNav = "1 command, lalu kembali ke insert mode",
+	TempNav = "1 command, lalu kembali ke insert mode: <C> o",
 
 	AdvancedChangeLine = [[
 	cmd for fixed line: <line>
