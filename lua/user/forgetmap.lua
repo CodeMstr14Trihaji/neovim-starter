@@ -65,61 +65,57 @@ local forget_map = {
 	CenterView = "zz",
 	BackTolastWrite = "g + i",
 	CaseToUpper = [[
-    🔠 Ubah huruf ke Kapital
-      gUiw → Uppercase satu kata (inner word)
+    Ubah huruf ke Kapital
+    gUiw → Uppercase satu kata (inner word)
     ]],
 
 	CaseToLower = [[
-    🔡 Ubah huruf ke huruf kecil
-      guiw → Lowercase satu kata (inner word)
+    Ubah huruf ke huruf kecil
+    guiw → Lowercase satu kata (inner word)
     ]],
 
 	CaseToggle = [[
-    🔁 Toggle besar-kecil huruf
-      g~w  → Toggle case satu kata
-      g~$  → Toggle case sampai akhir baris
+    Toggle besar-kecil huruf
+    g~w  → Toggle case satu kata
+    g~$  → Toggle case sampai akhir baris
     ]],
 
 	SelectParagraph = [[
-    📑 Seleksi satu paragraf
-      vip → Visual select inner paragraph
+    Seleksi satu paragraf
+    vip → Visual select inner paragraph
     ]],
 
 	ChangeInnerWord = [[
-    ✍️ Ganti isi satu kata
-      ciw → Change inner word (hapus lalu masuk insert mode)
+    Ganti isi satu kata
+    ciw → Change inner word (hapus lalu masuk insert mode)
     ]],
 
 	IndentLines = [[
-    ➡️ Indentasi Baris
-      >> → Indent ke kanan
-      << → Indent ke kiri
+    Indentasi Baris
+    >> → Indent ke kanan
+    << → Indent ke kiri
     ]],
 
 	JoinLines = [[
-    🔗 Gabungkan baris
-      J → Gabungkan baris saat ini dengan baris di bawahnya
+    Gabungkan baris
+    J → Gabungkan baris saat ini dengan baris di bawahnya
     ]],
 
 	SaveAndQuit = [[
-    💾 Simpan dan keluar
-      ZZ → Simpan perubahan dan keluar dari buffer (sama dengan :wq)
+    Simpan dan keluar
+    ZZ → Simpan perubahan dan keluar dari buffer (sama dengan :wq)
     ]],
 
 	Buffer = [[
-	🚍 Buffer option
+	Buffer option
 	<leader> b + selectOption
 	]],
 
-	ToogleWordWrap = [[
-	🪢 Word Wrap
-	<A-z>
-	]],
+	ToogleWordWrap = "Word Wrap <A-z>",
 
-	CopyLine = [[
-     ✂️ Copy line
-     yyP
-    ]],
+	CopyLine = "Copy line: yyp",
+
+	MoveFile = ":saveas path/baru/namafile.ext",
 }
 
 -- Register semua command :ForgetX
