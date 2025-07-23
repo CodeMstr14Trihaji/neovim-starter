@@ -20,3 +20,9 @@ vim.keymap.set("v", "<S-Left>", "<Left>")
 vim.keymap.set("v", "<S-Right>", "<Right>")
 vim.keymap.set("v", "<S-Up>", "<Up>")
 vim.keymap.set("v", "<S-Down>", "<Down>")
+
+vim.keymap.set("n", "<A-z>", function()
+	vim.wo.wrap = not vim.wo.wrap
+	print("Wrap: " .. (vim.wo.wrap and "ON" or "OFF"))
+end, { desc = "Toggle word wrap" })
+

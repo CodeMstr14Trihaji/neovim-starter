@@ -12,7 +12,7 @@ local forget_map = {
 	Undo = "u",
 	Redo = "<C-r>",
 	Move = "gg (atas), G (bawah), H/M/L (screen)",
-	Window = "<C-w> + h/j/k/l or <C-arrow>",
+	Window = "<C-w> + h/j/k/l or <C-w>arrow",
 	Search = "/text  lalu n/N\nGanti: :%s/old/new/g",
 	Visual = "v (karakter), V (baris), <C-v> (blok)",
 	Indent = "> dan < di Visual mode",
@@ -109,6 +109,11 @@ local forget_map = {
 	Buffer = [[
 	🚍 Buffer option
 	<leader> b + selectOption
+	]],
+
+	ToogleWordWrap = [[
+	🪢 Word Wrap
+	<A-z>
 	]],
 }
 
