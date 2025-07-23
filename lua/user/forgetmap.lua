@@ -121,6 +121,10 @@ local forget_map = {
 
 	MoveFile = ":saveas path/baru/namafile.ext",
 
+	InsertNav = "Dari mode insert tanpa escape : <A> h/j/k/l",
+
+	TempNav = "1 command, lalu kembali ke insert mode",
+
 	AdvancedChangeLine = [[
 	cmd for fixed line: <line>
 	for relative  line (mode normal): 
