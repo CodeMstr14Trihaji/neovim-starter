@@ -12,7 +12,7 @@ local forget_map = {
 	Undo = "u",
 	Redo = "<C-r>",
 	Move = "gg (atas), G (bawah), H/M/L (screen)",
-	Window = "<C-w> + h/j/k/l",
+	Window = "<C-w> + h/j/k/l or <C-arrow>",
 	Search = "/text  lalu n/N\nGanti: :%s/old/new/g",
 	Visual = "v (karakter), V (baris), <C-v> (blok)",
 	Indent = "> dan < di Visual mode",
@@ -21,6 +21,95 @@ local forget_map = {
 	SelectAll = "ggVG",
 	Buffers = ":bnext / :bprev / :bd",
 	Files = ":e <file> | :Ex | :NvimTreeToggle",
+	Navigate = "<C-u>up | <C-d>down | <C-y>Up view | <C-e>Down view",
+	ExitSearchMode = "noh",
+	FullNavigate = "<C-b>Max up | <C-f>",
+	SeeDiagnostic = "<C-w> d",
+	ExitSuggestBox = "<C-e>",
+	BlockAndWrite = "<Block-c>",
+	WriteMode = "i",
+	NormalMode = "Esc",
+	MainMenu = "Alpha",
+	SearchText = "?",
+	ReplaceText = [[ 
+    Block + v → :'<,'>s/old/new/{flags}
+    Seluruh file → :%s/old/new/{flags}
+    Flags:
+        g = global (semua)
+        i = ignore case
+        c = confirm per ganti
+    ]],
+	Tab = "Right: Block visual + >\nLeft: Block visual + <",
+	CommandHistory = "q:",
+	RecordMacro = [[
+        🔴 Rekam Macro di Normal Mode:
+        - `qa` mulai rekam ke register `a`
+        - Lakukan aksi seperti biasa (pindah, edit, hapus, dsb)
+        - `q` untuk berhenti merekam
+        - `@a` untuk jalankan macro dari register `a`
+
+        🔁 Jalankan Macro:
+        - `@a` → jalankan macro dari register `a`
+        - `@@` → jalankan macro terakhir
+        - `5@a` → jalankan macro `a` sebanyak 5 kali
+
+        📌 Tips Lanjutan:
+        - Visual Mode: blok teks lalu `:'<,'>normal @a` untuk eksekusi per baris
+        - Jalankan macro di banyak baris: `:10,20normal @a`
+        - Cek isi macro: `:registers a`
+        - Kosongkan macro: `qaq`
+
+        🧠 Register tersedia: a–z (huruf kecil). Bisa punya banyak macro!
+        ⚠️ Jangan mapping ulang tombol `q` di Normal Mode agar macro tetap berfungsi.
+        ]],
+	CenterView = "zz",
+	BackTolastWrite = "g + i",
+	CaseToUpper = [[
+    🔠 Ubah huruf ke Kapital
+      gUiw → Uppercase satu kata (inner word)
+    ]],
+
+	CaseToLower = [[
+    🔡 Ubah huruf ke huruf kecil
+      guiw → Lowercase satu kata (inner word)
+    ]],
+
+	CaseToggle = [[
+    🔁 Toggle besar-kecil huruf
+      g~w  → Toggle case satu kata
+      g~$  → Toggle case sampai akhir baris
+    ]],
+
+	SelectParagraph = [[
+    📑 Seleksi satu paragraf
+      vip → Visual select inner paragraph
+    ]],
+
+	ChangeInnerWord = [[
+    ✍️ Ganti isi satu kata
+      ciw → Change inner word (hapus lalu masuk insert mode)
+    ]],
+
+	IndentLines = [[
+    ➡️ Indentasi Baris
+      >> → Indent ke kanan
+      << → Indent ke kiri
+    ]],
+
+	JoinLines = [[
+    🔗 Gabungkan baris
+      J → Gabungkan baris saat ini dengan baris di bawahnya
+    ]],
+
+	SaveAndQuit = [[
+    💾 Simpan dan keluar
+      ZZ → Simpan perubahan dan keluar dari buffer (sama dengan :wq)
+    ]],
+
+	Buffer = [[
+	🚍 Buffer option
+	<leader> b + selectOption
+	]],
 }
 
 -- Register semua command :ForgetX

@@ -20,6 +20,3 @@ vim.keymap.set("v", "<S-Left>", "<Left>")
 vim.keymap.set("v", "<S-Right>", "<Right>")
 vim.keymap.set("v", "<S-Up>", "<Up>")
 vim.keymap.set("v", "<S-Down>", "<Down>")
-
--- Bikin Ctrl+y sebagai redo
-vim.keymap.set("n", "<C-y>", "<C-r>", { noremap = true, silent = true })
