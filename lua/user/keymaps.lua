@@ -9,4 +9,17 @@ keymap("n", "f", "<cmd>NvimTreeFindFileToggle<cr><cr><Up>", opts)
 vim.keymap.set("n", "<Tab>", ":bnext<CR>")
 vim.keymap.set("n", "<S-Tab>", ":bprev<CR>")
 
+-- Shift + Arrow Keys untuk masuk Visual Mode dan berpindah
+vim.keymap.set("n", "<S-Left>", "v<Left>")
+vim.keymap.set("n", "<S-Right>", "v<Right>")
+vim.keymap.set("n", "<S-Up>", "v<Up>")
+vim.keymap.set("n", "<S-Down>", "v<Down>")
 
+-- Kalau sudah di visual mode, lanjutkan seleksi dengan arah
+vim.keymap.set("v", "<S-Left>", "<Left>")
+vim.keymap.set("v", "<S-Right>", "<Right>")
+vim.keymap.set("v", "<S-Up>", "<Up>")
+vim.keymap.set("v", "<S-Down>", "<Down>")
+
+-- Bikin Ctrl+y sebagai redo
+vim.keymap.set("n", "<C-y>", "<C-r>", { noremap = true, silent = true })

@@ -9,3 +9,5 @@ require("user.lsp_notify")
 require("user.welcome_notify")
 require("plugins.formatter")
 require("user.learn_day")
+require("user.forgetmap").setup()
+
