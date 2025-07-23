@@ -125,6 +125,8 @@ local forget_map = {
 
 	TempNav = "1 command, lalu kembali ke insert mode: <C> o",
 
+	InsertEnter = "<C-o>o",
+
 	AdvancedChangeLine = [[
 	cmd for fixed line: <line>
 	for relative  line (mode normal): 
