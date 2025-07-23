@@ -106,6 +106,10 @@ local forget_map = {
     ZZ → Simpan perubahan dan keluar dari buffer (sama dengan :wq)
     ]],
 
+	QuitWithoutSave = [[
+    Keluar tanpa simpan: q!
+    ]],
+
 	Buffer = [[
 	Buffer option
 	<leader> b + selectOption
@@ -116,6 +120,19 @@ local forget_map = {
 	CopyLine = "Copy line: yyp",
 
 	MoveFile = ":saveas path/baru/namafile.ext",
+
+	AdvancedChangeLine = [[
+	cmd for fixed line: <line>
+	for relative  line (mode normal): 
+	<num>k => keatas {num} kali
+	<num>j => kebawah {num} kali
+	d<num>k => hapus {num} baris keatas
+	d<num>j => hapus {num} baris kebawah
+	c<num>k => ganti {num} baris keatas
+	c<num>j => ganti {num} baris kebawah
+    y<num>k => copy {num} baris keatas
+    y<num>j => copy {num} baris kebawah
+	]],
 }
 
 -- Register semua command :ForgetX
