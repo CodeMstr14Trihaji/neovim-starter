@@ -22,6 +22,13 @@ return {
 			require("nvim-tree").setup()
 		end,
 	},
+	{
+  "WieeRd/auto-lsp.nvim",
+  dependencies = { "neovim/nvim-lspconfig" },
+  config = function()
+    require("auto-lsp").setup({})
+  end,
+},
 
 	-- Dalam plugin setup | SET UP MAKEFILE!
 	{

@@ -5,7 +5,7 @@ return {
     -- Pastikan cmp-nvim-lsp ada di dependencies ini atau di tempat lain
     dependencies = {
       "hrsh7th/cmp-nvim-lsp", -- Pastikan ini terinstal dan dimuat
-      "nvimdev/auto-lsp.nvim", -- Karena on_attach Anda dari sini
+      "WieeRd/auto-lsp.nvim", -- Karena on_attach Anda dari sini
       -- tambahkan dependencies lain yang mungkin Anda miliki untuk LSP/completion
     },
     config = function()
@@ -91,7 +91,7 @@ return {
   },
   -- Pastikan auto-lsp.nvim juga didefinisikan sebagai plugin di sini
   {
-    "nvimdev/auto-lsp.nvim",
+    "WieeRd/auto-lsp.nvim",
     opts = {} -- Jika Anda memiliki opsi khusus untuk auto-lsp.nvim, tempatkan di sini
   },
   -- Pastikan nvim-cmp dan cmp-nvim-lsp juga didefinisikan sebagai plugin
